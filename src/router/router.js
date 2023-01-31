@@ -1,60 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
-const routes = [
-  {
-		path: '/',
-		name: 'Home',
-		component: () => import('../views/HomePage.vue'),
-		meta: {
-			isAuthenticated: false,
-		}
-	},
-  {
-		path: '/login',
-		name: 'Login',
-		component: () => import('../views/LoginFormView.vue'),
-		meta: {
-			isAuthenticated: false,
-		}
-	},
-	{
-		path: '/register',
-		name: 'Register',
-		component: () => import('../views/RegisterFormView.vue'),
-		meta: {
-			isAuthenticated: false,
-		}
-	},
-	{
-		path: '/details',
-		name: 'Details',
-		component: () => import('../views/DetailsPage.vue'),
-		meta: {
-			isAuthenticated: false,
-		}
-	},
-	{
-		path: '/tickets',
-		name: 'Tickets',
-		component: () => import('../views/MyTicket.vue'),
-		meta: {
-			isAuthenticated: false,
-		}
-	}
-	// {
-	// 	path: '/authenticate',
-	// 	name: 'Authenticate',
-	// 	component: () => import('../views/AuthenticatedPage.vue'),
-	// 	meta: {
-	// 		isAuthenticated: true,
-	// 	}
-	// },
-];
+import routes from './routes';
+import API from '../utils/API'
 
 const router = createRouter({
 	history: createWebHistory(),
 	routes,
 });
+
+router.beforeEach((to, from, next) => {
+	const token = localStorage.getItem('token');
+
+	if(token) {
+		API.defaults.headers.common['Authorization'] = `Bearer ${token}`
+	}
+
+	next();
+});
+
+// router.beforeEach((to) => {
+//   if (to.meta.isAuthenticated && localStorage.getItem('token') === '') {
+//     return { name: 'Login' };
+//   }
+// });
 
 
 export default router;

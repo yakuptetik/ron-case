@@ -5,9 +5,9 @@ import MainButton from '../MainButton.vue';
 
 <template>
   <div>
-    <div class="border cursor-pointer  border-[#413b3b74] rounded-xl">
+    <div class="border cursor-pointer  border-[#413b3b74] rounded-xl mb-3">
       <img class="object-fill h-[300px] rounded-xl" src="../images/grid.webp" alt="">
     </div>
-    <MainButton :buttonName="'book now'" class="w-full pt-3 text-white" bigSize textSize/>
+    <MainButton :buttonName="'book now'" class="w-full text-white" bigSize textSizexl/>
   </div>
 </template>

@@ -56,8 +56,8 @@ import PhotoGaleri from '../components/sliders/PhotoGaleri.vue';
           </div>
         </div>
       </div>
-      <div class="my-12">
-      <MainButton class="h-full w-full" largeSize textSizexl buttonName="book now" />
+      <div class="my-12 h-full  flex items-center justify-center">
+      <MainButton largeSize textSizexl buttonName="book now" />
       </div>
       <PhotoGaleri categoryTitle="photo galery"/>
     </div>

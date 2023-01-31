@@ -21,7 +21,9 @@ const props = defineProps({
             </router-link>
         </div>
         </div>
-        <MainButton :buttonName="'sing in | join'"/>
+        <router-link to="/login">
+          <MainButton :buttonName="'sing in | join'"/>
+        </router-link>
       </div>
     </div>
 </template>

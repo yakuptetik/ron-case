@@ -1,8 +1,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import IconBase from '../components/icons/IconBase.vue';
-import RonLogo from '../components/icons/RonLogo.vue';
 import { useUserStore } from '../store/user'
 import { useRouter } from 'vue-router'
 
@@ -12,16 +10,15 @@ const useStore = useUserStore()
 
 const email = ref('') 
 const password = ref('')
-const company = ref('')
-const timezone = ref('Europe/Istanbul')
+const username = ref('')
+
 
 
 function handleRegister() {
     useStore.registerUser({ 
         email: email.value,
-        password: email.value,
-        company: company.value,
-        timezone: timezone.value
+        password: password.value,
+        username: username.value
     })
     .then(() => {
       router.push('/login')
@@ -34,7 +31,7 @@ function handleRegister() {
 </script>
 
 
-<template >
+<template>
 <section class="">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     <div class="pb-8">
@@ -49,15 +46,15 @@ function handleRegister() {
 
                 <div class="flex flex-col">
                     <label for="email" class="block mb-2 text-sm font-medium text-white ">
-                      Your Company
+                      Your username
                     </label>
                     <input 
                         required
-                        v-model="company" 
+                        v-model="username" 
                         placeholder="Your mail address" 
                         type="text" 
-                        name="company" 
-                        id="company"
+                        name="username" 
+                        id="username"
                         class="disabled:bg-black disabled:text-white disabled:border-slate-200 disabled:shadow-none
                               invalid:border-red-500 invalid:text-red-600  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
                               focus:invalid:border-red-500 focus:invalid:ring-red-500 bg-black border border-gray-300 text-white sm:text-sm
@@ -84,23 +81,6 @@ function handleRegister() {
                   <div>
                       <label for="password" class="block mb-2 text-sm font-medium text-white ">
                         Password
-                      </label>
-                      <input 
-                          v-model="password" 
-                          required 
-                          type="password" 
-                          name="password" 
-                          id="password" 
-                          placeholder="••••••••"
-                          class="disabled:bg-black disabled:text-white disabled:border-slate-200 disabled:shadow-none
-                              invalid:border-red-500 invalid:text-red-600  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                              focus:invalid:border-red-500 focus:invalid:ring-red-500 bg-black border border-gray-300 text-white sm:text-sm
-                              rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-                  </div>
-
-                  <div>
-                      <label for="password" class="block mb-2 text-sm font-medium text-white ">
-                        Password Again
                       </label>
                       <input 
                           v-model="password" 

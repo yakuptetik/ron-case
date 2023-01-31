@@ -10,28 +10,18 @@ const props = defineProps({
 </script>
 
 <template>
-    <button class="flex items-center justify-center relative text-sm">
-      <div :class="{'w-20 h-12': bigSize,
-                  'w-32 h-[55px]': largeSize 
-                  }" 
-            class="btn h-9 w-[60px]"
-          >
-          <!-- boş div -->
-      </div>
-      <div :class="{'text-lg': textSizelg,'text-2xl': textSizexl}"
-            class="absolute h-10  z-20 flex items-center justify-center uppercase"
-          >
+    <button class="flex items-center btn justify-center relative text-sm px-3 " :class="{'px-4 py-2': bigSize, 'px-5 py-2': largeSize }">
+        <div :class="{'text-lg': textSizelg,'text-2xl': textSizexl}" class="h-10 z-20 flex items-center justify-center uppercase">
           {{ buttonName }}
-      </div>
-      <div :class="{'w-20 h-12': bigSize,'w-32 h-[55px]': largeSize}"
-            class="btn rotate-180 w-[60px] h-9">
-          <!-- boş div -->
       </div>
     </button>
 </template>
 
 <style>
 .btn {
-  background:linear-gradient(135deg, transparent 10%, #ed3833 1%);
+  background: linear-gradient(135deg, transparent 12px, red 13px) top left, 
+              linear-gradient(-45deg, transparent 12px, red 13px) bottom right;
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
 }
 </style>

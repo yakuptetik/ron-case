@@ -14,7 +14,7 @@ const props = defineProps({
       {{ categoryTitle }}
     </div>
   </div>
-  <div class="flex items-center  mt-4 overflow-y-auto  gap-10">
+  <div class="flex items-center  mt-4 overflow-x-auto  gap-10">
           <div class="flex-none hover:opacity-100 pb-3">
             <div class="flex  items-center gap-4 pt-4 pr-24">
               <NewShowingCard v-for="index in 20"/>

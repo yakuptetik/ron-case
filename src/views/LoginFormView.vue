@@ -1,14 +1,15 @@
 
 <script setup>
 import { ref } from 'vue';
-import IconBase from '../components/icons/IconBase.vue';
-import RonLogo from '../components/icons/RonLogo.vue';
 import { useUserStore } from '../store/user'
 
-const useStore = useUserStore()
+const userStore = useUserStore()
 
 function handleLogin(){
-  useStore.loginUser()
+  userStore.loginUser({ 
+        email: email.value,
+        password: password.value,
+    })
 }
 
 const password = ref('')

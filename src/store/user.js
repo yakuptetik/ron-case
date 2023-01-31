@@ -1,19 +1,26 @@
-import axios from 'axios'
-import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { defineStore } from 'pinia'
+
+import API from '../utils/API';
+
 
 
 export const useUserStore = defineStore('user', () => {
 
-  const authUsers = ref(null)
+  const authUsers = ref({
+    loggedIn: false,
+    data: null
+  });
+  const token = ref('')
 
 
-  function loginUser() {
-    // timezone: "Europe/Istanbul"
-    axios.post('https://api.plandy.co/api/auth/login')
+  function loginUser(asd) {
+    API.post('/auth/login', asd)
       .then((response) => {
-
+        console.log(response.data.token)
+          API.defaults.headers.common['Authorization'] = `Bearer ${token}`
           localStorage.setItem('token', response.data.token);
+        
       })
       .catch(() => {
       });
@@ -21,7 +28,7 @@ export const useUserStore = defineStore('user', () => {
   function registerUser(authUser) {
       return new Promise((resolve, reject) => {
         try {
-          axios.post('https://api.plandy.co/api/auth/register', authUser)
+          API.post('/auth/register', authUser)
             .then((response) => {
               localStorage.setItem('token', response.data.token);
               resolve();
@@ -32,5 +39,7 @@ export const useUserStore = defineStore('user', () => {
       });
   }
 
-  return { authUsers, loginUser, registerUser }
+
+
+  return { authUsers, loginUser, registerUser}
 })

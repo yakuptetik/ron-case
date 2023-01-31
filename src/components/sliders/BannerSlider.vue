@@ -5,9 +5,9 @@ import MainButton from '../MainButton.vue';
 
 <template>
   <div class="w-full relative text-white">
-    <div class="absolute bottom-32 left-24 w-1/3">
+    <div class="absolute w-1/3 bottom-32 left-24 min-[200px]:max-md:w-1/2 min-[200px]:max-md:left-5 min-[200px]:max-md:bottom-5">
       <div class="w-full">
-          <img class="mb-12" src="../images/endgameLogo.png" alt="">
+          <img class="mb-12 min-[200px]:max-md:mb-1" src="../images/endgameLogo.png" alt="">
         <div v-if="$route.name === 'Home'">
           <div class="flex item-center gap-2 pb-3">
             <div>
@@ -27,15 +27,16 @@ import MainButton from '../MainButton.vue';
               culpa nihil magni facilis dicta, illo explicabo
               elit. Nulla possimus sed dolo
           </div>
-          <div class="flex justify-start gap-6 items-center w-full">
-            <MainButton textSize bigSize :buttonName="'book now'" />
-            <MainButton textSize bigSize :buttonName="'ply trailer'"/>
+          <div class="flex justify-start min-[200px]:max-md:justify-center gap-6 items-center">
+            <MainButton textSizexl bigSize :buttonName="'book now'" />
+            <MainButton textSizexl bigSize :buttonName="'ply trailer'"/>
           </div>
         </div>
       </div>
     </div>
     <div v-if="$route.name === 'Home'">
-      <img class="w-screen h-screen" src="../images/avenger.jpeg" alt="">
+      <img class="w-full h-full  min-h-screen min-[200px]:max-md:hidden" src="../images/avenger.jpeg" alt="">
+      <img class="w-full h-full  min-h-screen md:max-lg:hidden lg:hidden " src="../images/mobilavengers.jpeg" alt="">
     </div>
     <div v-if="$route.name === 'Details' || $route.name === 'Tickets' ">
         <img  src="../images/detailpagebanner.jpeg" alt="">

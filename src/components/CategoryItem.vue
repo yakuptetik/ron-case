@@ -2,8 +2,8 @@
 import CardItem from './CardItem.vue';
 
 const props = defineProps({
-  categoryTitle: String
-
+  categoryTitle: String,
+  movies:Object
 })
 
 </script>
@@ -13,8 +13,10 @@ const props = defineProps({
     <div class="text-white text-3xl uppercase border-l-4 border-red-800 pl-3">
       {{ categoryTitle }}
     </div>
-    <div class="grid grid-cols-5 gap-4 pt-8">
-      <CardItem v-for="index in 5"/>
+    <div class="grid grid-cols-5 md:grid-cols-3 lg:grid-cols-5 sm:grid-cols-2 max-sm:grid-cols-2 gap-4 pt-8">
+      <div v-for="movie in movies" :key="movie.id" >
+        <CardItem :movie="movie"/>
+      </div>
     </div>
   </div>
 </template>
