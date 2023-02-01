@@ -1,42 +1,50 @@
 <script setup>
 import { ref } from 'vue'
-import { useMovieStore } from '../../../store/movie';
-import API from '../../../utils/API';
+import { useImageStore } from '../../../store/image';
+import { useCastStore } from '../../../store/cast';
 
-const useStore = useMovieStore()
+
+const imageStore = useImageStore();
+const castStore = useCastStore();
+
+const image = ref({
+    url: null,
+    id: null,
+});
 
 const name = ref('');
 
-const image = ref({
-    url: URL,
-    id: Number,
-})
-
-const onFileChange = (e) => {
-  image.value = e.target.files[0];
-  imageUpload();
-};
-    
-async function imageUpload  () {
-  if (!image.value) {
+async function onFileChange(e) {
+  const file = e.target.files[0];
+  if (!file) {
     alert('please fill the filed');
   } else {
-    const formdata = new FormData();
-    formdata.append('image', image.value);
-    await API.post('images',formdata ).then(() => {
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    const formData = new FormData();
+
+    formData.append('image', file);
+
+    await imageStore.upload(formData)
+      .then((data) => {
+        image.value = data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
+};
+    
+async function createCast() {
+  castStore.create({
+      name: name.value,
+      image_id: image.value.id
+    });
+  
 }
-
-
 </script>
 
 <template>
   <div class="flex items-center">
-      <form @submit.prevent="imageUpload" class="flex w-full items-center justify-start gap-3 h-1/2">
+      <form @submit.prevent="createCast" class="flex w-full items-center justify-start gap-3 h-1/2">
 
           <input
             type="file"

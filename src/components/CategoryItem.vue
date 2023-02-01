@@ -14,7 +14,7 @@ const props = defineProps({
       {{ categoryTitle }}
     </div>
     <div class="grid grid-cols-5 md:grid-cols-3 lg:grid-cols-5 sm:grid-cols-2 max-sm:grid-cols-2 gap-4 pt-8">
-      <div v-for="movie in movies" :key="movie.id" >
+      <div v-for="movie in movies" :key="movies" >
         <CardItem :movie="movie"/>
       </div>
     </div>

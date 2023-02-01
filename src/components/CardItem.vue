@@ -2,12 +2,18 @@
 <script setup>
 
 const props = defineProps({
-  movie:Object,
+  movie: {
+    type: Object,
+    required: true
+  },
 })
 </script>
 <template>
-  <div class="border cursor-pointer border-[#413b3b74] rounded-xl">
-    <img class="rounded-xl" :src="movie.image" alt="">
+  <router-link :to="{ name: 'Details', params: { id: movie.id }}" >
+  <div class="border cursor-pointer h-full  overflow-hidden border-[#413b3b74] rounded-xl">
+    <img class="rounded-xl w-full h-[300px] object-fill" :src="movie.poster" alt="">
   </div>
-  {{ movie.title }}
+  </router-link>
+
+
 </template>

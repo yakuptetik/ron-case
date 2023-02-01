@@ -19,7 +19,7 @@ onMounted(() => {
   <BannerSlider/>
   <CategoryItem :movies="useStore.movies" categoryTitle="top in the box office"/>
   <div class="pl-24">
-    <NewMoviesCategory categoryTitle="New Showing"/>
+    <NewMoviesCategory :movies="useStore.movies" categoryTitle="New Showing"/>
   </div>
   <CategoryItem categoryTitle="coming soon"/>
 </div>

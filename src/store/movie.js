@@ -1,23 +1,27 @@
-import { ref } from 'vue'
-import { defineStore } from 'pinia'
-
+import { ref } from 'vue';
+import { defineStore } from 'pinia';
 import API from '../utils/API';
 
 
 
 export const useMovieStore = defineStore('movie', () => {
 
-  const movies = ref(null)
-  const token = ref('')
-  const casts = ref([])
+  const movies = ref([]);
+  const casts = ref([]);
+  const images = ref ([])
+
+
+  function getMovie(movieId) {
+    return movies.value.find((movie) => movie.id === Number(movieId))
+  }
 
   function fetchMovies() {
     return new Promise((resolve, reject) => {
       try {
-        API.get('/movies')
+        API.get('movies')
         
           .then((response) => {
-              movies.value = response.data;
+              movies.value = response.data.movies;
             resolve();
           });
       }	catch (err) {
@@ -25,17 +29,15 @@ export const useMovieStore = defineStore('movie', () => {
       }
     });
 }
+
+
 function addMovie(movie) {
   return new Promise((resolve, reject) => {
     try {
       API.post('movies', movie)
         .then((response) => {
-          token.value = response.data.token
-          API.defaults.headers.common['Authorization'] = `Bearer ${token}`
-          localStorage.setItem('token', response.data.token);
-          movies.value.push({ ...response.data, id: movies.value.length +1 });
+          movies.value.push(response.data);
           resolve();
-          console.log(response.data.token)
         });
     }	catch (err) {
       reject(err);
@@ -48,10 +50,11 @@ function addMovie(movie) {
 function appendCast(payload) {
   casts.value.push(payload)
 }
+
 // function deleteCast() {
 //   casts.value.pop()
 // }
 
 
-  return {  movies, casts, fetchMovies, addMovie,appendCast }
+  return {  movies, casts, images, fetchMovies, addMovie,appendCast, getMovie }
 })

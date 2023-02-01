@@ -24,7 +24,7 @@ export default [
 		}
 	},
 	{
-		path: '/details',
+		path: '/details/:id',
 		name: 'Details',
 		component: () => import('../views/DetailsPage.vue'),
 		meta: {
@@ -43,6 +43,14 @@ export default [
 		path: '/admin',
 		name: 'Admin',
 		component: () => import('../views/AdminPage.vue'),
+		meta: {
+			isAuthenticated: false,
+		}
+	},
+	{
+		path: '/file',
+		name: 'File',
+		component: () => import('../views/UplFile.vue'),
 		meta: {
 			isAuthenticated: false,
 		}

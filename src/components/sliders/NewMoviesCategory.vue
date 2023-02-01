@@ -2,8 +2,8 @@
 import NewShowingCard from './NewShowingCard.vue';
 
 const props = defineProps({
-  categoryTitle: String
-
+  categoryTitle: String,
+  movies:Object
 })
 
 </script>
@@ -17,7 +17,9 @@ const props = defineProps({
   <div class="flex items-center  mt-4 overflow-x-auto  gap-10">
           <div class="flex-none hover:opacity-100 pb-3">
             <div class="flex  items-center gap-4 pt-4 pr-24">
-              <NewShowingCard v-for="index in 20"/>
+              <div  v-for="movie in movies" :key="movie.id">
+                  <NewShowingCard :movie="movie"/>
+              </div>
             </div>
           </div>
         </div>

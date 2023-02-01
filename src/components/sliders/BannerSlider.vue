@@ -1,6 +1,14 @@
 <script setup>
 import MainButton from '../MainButton.vue';
 
+
+defineProps({
+    desc: String,
+    title: String,
+    type:String,
+    duration:String
+})
+
 </script>
 
 <template>
@@ -11,21 +19,19 @@ import MainButton from '../MainButton.vue';
         <div v-if="$route.name === 'Home'">
           <div class="flex item-center gap-2 pb-3">
             <div>
-              dsfgdefrg
+              Action,Adventure,Drama
             </div>
             |
             <div>
-              dsfgdefrg
+              3h 1m
             </div>
             |
             <div>
-              dsfgdefrg
+              English
             </div>
           </div>
           <div class="pb-5">
-              elit. Nulla possimus sed dolores corporis ipsum 
-              culpa nihil magni facilis dicta, illo explicabo
-              elit. Nulla possimus sed dolo
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati laborum cumque dolores reiciendis placeat nihil, veniam, blanditiis atque error
           </div>
           <div class="flex justify-start min-[200px]:max-md:justify-center gap-6 items-center">
             <MainButton textSizexl bigSize :buttonName="'book now'" />

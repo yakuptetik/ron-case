@@ -1,8 +1,8 @@
 <script setup>
 
 const props = defineProps({
-  categoryTitle: String
-
+  categoryTitle: String,
+  image:URL
 })
 
 </script>
@@ -17,8 +17,8 @@ const props = defineProps({
   <div class="flex items-center  mt-4 overflow-x-auto  overflow-y-hidden gap-10">
           <div class="flex-none hover:opacity-100 pb-3">
             <div class="flex  items-center gap-4 pt-4 pr-10">
-              <div  v-for="index in 20" class="border overflow-hidden cursor-pointer border-[#413b3b74] ">
-                <img class="object-contain   rounded-xl" src="../images/endgameLogo.png" alt="">
+              <div class="border overflow-hidden cursor-pointer border-[#413b3b74] ">
+                <img class="object-contain h-[200px]  rounded-xl" :src="image" alt="">
               </div>
             </div>
           </div>
