@@ -46,14 +46,6 @@ export default [
 		meta: {
 			isAuthenticated: false,
 		}
-	},
-	{
-		path: '/file',
-		name: 'File',
-		component: () => import('../views/UplFile.vue'),
-		meta: {
-			isAuthenticated: false,
-		}
 	}
 	// {
 	// 	path: '/authenticate',

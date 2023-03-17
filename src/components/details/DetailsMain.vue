@@ -1,5 +1,6 @@
 <script setup>
-defineProps({
+
+const props = defineProps({
   duration: String,
   imdb: String,
   price:String,

@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', () => {
 
 
   function loginUser(asd) {
-    API.post('/auth/login', asd)
+    API.post('login', asd)
       .then((response) => {
         console.log(response.data.token)
           API.defaults.headers.common['Authorization'] = `Bearer ${token}`

@@ -36,7 +36,7 @@ function addMovie(movie) {
     try {
       API.post('movies', movie)
         .then((response) => {
-          movies.value.push(response.data);
+          movies.value.push(response.data.movie);
           resolve();
         });
     }	catch (err) {
